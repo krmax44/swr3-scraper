@@ -1,7 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
 import got from 'got';
-import Proxy from './utils/Proxy.js';
 import parse from './parse.js';
 import { createObjectCsvWriter } from 'csv-writer';
 
@@ -10,9 +9,6 @@ const writer = createObjectCsvWriter({
   header: ['track', 'artist', 'time'].map(id => ({ id, title: id })),
   append: true
 });
-
-const proxy = new Proxy();
-await proxy.getProxies();
 
 export const domain = 'https://www.swr3.de';
 const start = `${domain}/playlisten/index.html`;
